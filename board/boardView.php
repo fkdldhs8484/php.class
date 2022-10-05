@@ -45,11 +45,12 @@ $myBoardID = $_GET['myBoardID'];
 
 // echo $myBoardID;
 
+// 숙제-보드뷰 + 1 (조회수증가?) UPDATE boardView
+$sql = "UPDATE myBoard SET boardView = boardView +1 WHERE myBoardID = {$myBoardID}";
+$connect->query($sql);
+
 $sql = "SELECT b.boardTitle, m.youName, b.regTime, b.boardView, b.boardContents FROM myBoard b JOIN myMember m ON(m.myMemberID = b.myMemberID) WHERE b.myBoardID = {$myBoardID}";
 $result = $connect->query($sql);
-
-// 숙제-보드뷰 + 1 (조회수증가?) UPDATE boardView
-$sql = "UPDATE myBoardID SET boardView = +1 WHERE boardView = {'$boardView'}";
 
 if ($result) {
     $info = $result->fetch_array(MYSQLI_ASSOC);
