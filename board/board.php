@@ -37,10 +37,22 @@ include '../connect/sessionCheck.php';
             <div class="board__search">
                 <div class="left">
                     <!-- *s 총 <em>1111</em>건의 게시물이 등록되어 있습니다. (숙제) -->
-<?php function msg($alert)
+<?php
+function msg($alert)
 {
     echo '<p>총 ' . $alert . '건이 검색되었습니다.</p>';
-} ?>
+}
+
+$sql =
+    'SELECT b.myBoardID, b.boardTitle, b.boardContents, m.youName, b.boardView FROM myBoard b JOIN myMember m ON(b.myMemberID = m.myMemberID)';
+
+$result = $connect->query($sql);
+
+if ($result) {
+    $count = $result->num_rows;
+    msg($count);
+}
+?>
                 </div>
                 <div class="right">
                 <form action="boardSearch.php" name="boardSearch" method="get">
