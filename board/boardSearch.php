@@ -123,10 +123,11 @@ if ($count > 0) {
                     <ul>
 <?php
 // echo $totalCount;
+
 // 총 페이지 갯수
 $boardCount = ceil($totalCount / $viewNum);
 
-// echo $totalCount;
+// echo $boardCount;
 
 // 현재 페이지를 기준으로 보여주고 싶은 갯수
 $pageCurrent = 5;
@@ -157,7 +158,7 @@ for ($i = $startPage; $i <= $endPage; $i++) {
         $active = 'active';
     }
 
-    echo "<li class='{$active}'><a href='board.php?page={$i}&searchKeyword={$searchKeyword}&searchOption={$searchOption}'>{$i}</a></li>"; //클릭하면 주소창 번호 바뀜.
+    echo "<li class='{$active}'><a href='boardSearch.php?page={$i}&searchKeyword={$searchKeyword}&searchOption={$searchOption}'>{$i}</a></li>";
 }
 
 // 다음 페이지, 마지막 페이지
